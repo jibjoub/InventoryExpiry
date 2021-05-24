@@ -38,14 +38,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         ListView products = (ListView) findViewById(R.id.product_list);
-        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        //Product tomate = new Product(formatter.format(new Date()), "12345444444444");
-        //Product jambon = new Product(formatter.format(new Date()),"12345444444444" );
-
-
-        //list.add(tomate);
-        //list.add(jambon);
-
 
         ProductListAdapter adapter = new ProductListAdapter(this, R.layout.list_adapter, list);
         products.setAdapter(adapter);
