@@ -3,15 +3,15 @@ package com.example.inventoryexpiry;
 import java.util.Date;
 
 public class Product {
-    private Date expiryDate;
+    private String expiryDate;
     private long GTIN;
 
-    public Product(Date expiryDate, long GTIN) {
+    public Product(String expiryDate, long GTIN) {
         this.expiryDate = expiryDate;
         this.GTIN = GTIN;
     }
 
-    public Date getExpiryDate() {
+    public String getExpiryDate() {
         return expiryDate;
     }
 
@@ -19,7 +19,7 @@ public class Product {
         return GTIN;
     }
 
-    public void setExpiryDate(Date expiryDate) {
+    public void setExpiryDate(String expiryDate) {
         this.expiryDate = expiryDate;
     }
 }
