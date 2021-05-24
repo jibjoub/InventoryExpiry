@@ -20,7 +20,7 @@ import static android.util.Log.*;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<Product> list = new ArrayList<>();
+    public static ArrayList<Product> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +39,12 @@ public class MainActivity extends AppCompatActivity {
 
         ListView products = (ListView) findViewById(R.id.product_list);
         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        Product tomate = new Product(formatter.format(new Date()), "12345444444444");
-        Product jambon = new Product(formatter.format(new Date()),"12345444444444" );
+        //Product tomate = new Product(formatter.format(new Date()), "12345444444444");
+        //Product jambon = new Product(formatter.format(new Date()),"12345444444444" );
 
 
-        list.add(tomate);
-        list.add(jambon);
+        //list.add(tomate);
+        //list.add(jambon);
 
 
         ProductListAdapter adapter = new ProductListAdapter(this, R.layout.list_adapter, list);
@@ -63,7 +63,8 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "Y a t il un intent : " + intent);
         if (intent.getAction()!=Intent.ACTION_MAIN) {
            final Product p = (Product) intent.getSerializableExtra("product");
-            list.add(p);
+           list = Methods.addToList(list, p);
         }
     }
+
 }

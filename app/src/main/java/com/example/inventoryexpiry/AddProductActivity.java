@@ -7,6 +7,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -20,15 +23,24 @@ public class AddProductActivity extends AppCompatActivity {
 
     private TextView dateView;
     private DatePickerDialog.OnDateSetListener DateSetListener;
+    EditText GTIN;
+    Button validerButton;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        final String TAG = AddProductActivity.class.getSimpleName();
+        Log.d(TAG, "do we make to here");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
 
         dateView = (TextView) findViewById(R.id.add_product_date);
-        EditText GTIN = (EditText) findViewById(R.id.editTextGTIN);
-        Button validerButton = (Button) findViewById(R.id.valider_button);
+        GTIN = (EditText) findViewById(R.id.editTextGTIN);
+        GTIN.addTextChangedListener(textWatcher);
+
+        validerButton = (Button) findViewById(R.id.valider_button);
+        validerButton.setEnabled(false);
 
         //Getting the data about the date with a scrolling selection
         dateView.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +70,7 @@ public class AddProductActivity extends AppCompatActivity {
             }
         };
 
+
         validerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,4 +85,25 @@ public class AddProductActivity extends AppCompatActivity {
 
 
     }
+    private TextWatcher textWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            final String TAG = AddProductActivity.class.getSimpleName();
+            Log.d(TAG, "length of editText :" + s.length());
+            if (GTIN.getText().toString().matches("[0-9]{13}") && dateView.getText().length() > 0) {
+                validerButton.setEnabled(true);
+            }
+    }
+
+    };
 }
