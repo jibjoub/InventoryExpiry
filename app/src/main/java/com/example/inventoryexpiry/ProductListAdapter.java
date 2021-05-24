@@ -29,7 +29,7 @@ public class ProductListAdapter extends ArrayAdapter<Product> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         String date = getItem(position).getExpiryDate();
-        long gtin = getItem(position).getGTIN();
+        String gtin = getItem(position).getGTIN();
 
         Product product = new Product(date, gtin);
 
@@ -40,7 +40,7 @@ public class ProductListAdapter extends ArrayAdapter<Product> {
         TextView tvGtin = (TextView) convertView.findViewById(R.id.textView2);
 
         tvDate.setText(date.toString());
-        tvGtin.setText(Long.toString(gtin));
+        tvGtin.setText(gtin);
 
         return convertView;
     }

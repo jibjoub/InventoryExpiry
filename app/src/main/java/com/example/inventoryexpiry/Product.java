@@ -1,12 +1,12 @@
 package com.example.inventoryexpiry;
 
-import java.util.Date;
+import java.io.Serializable;
 
-public class Product {
+public class Product implements Serializable {
     private String expiryDate;
-    private long GTIN;
+    private String GTIN;
 
-    public Product(String expiryDate, long GTIN) {
+    public Product(String expiryDate, String GTIN) {
         this.expiryDate = expiryDate;
         this.GTIN = GTIN;
     }
@@ -15,7 +15,7 @@ public class Product {
         return expiryDate;
     }
 
-    public long getGTIN() {
+    public String getGTIN() {
         return GTIN;
     }
 
