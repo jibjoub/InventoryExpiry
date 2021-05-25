@@ -5,12 +5,14 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="@string/liste_prod"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.InventoryExpiry">
-        <activity android:name=".AddProductActivity"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".AddProductActivity"
+            android:label="@string/nouveau_produit"></activity>
+        <activity android:name=".MainActivity"
+            android:label="@string/liste_prod">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

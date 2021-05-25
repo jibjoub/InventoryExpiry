@@ -54,14 +54,12 @@ public class AddProductActivity extends AppCompatActivity {
         GTIN = (EditText) findViewById(R.id.editTextGTIN);
         validerButton = (Button) findViewById(R.id.valider_button);
 
-        //Typeface nunito_font = Typeface.createFromAsset(getAssets(), "fonts.Nunito/nunito.ttf");
-        //instructions.setTypeface(nunito_font);
-
         //Disable it, it will need to check certain conditions to be enabled
         validerButton.setEnabled(false);
 
         //Link the textWatcher with the editText
         GTIN.addTextChangedListener(textWatcher);
+        dateView.addTextChangedListener(textWatcher);
 
         //Getting the data about the date with a scrolling selection
         dateView.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +70,7 @@ public class AddProductActivity extends AppCompatActivity {
                 int month = cal.get(Calendar.MONTH);
                 int day = cal.get(Calendar.DAY_OF_MONTH);
 
+                Locale.setDefault(Locale.FRANCE);
                 DatePickerDialog dialog = new DatePickerDialog(
                         AddProductActivity.this,
                         android.R.style.Theme_Holo_Light_Dialog_MinWidth,
@@ -121,9 +120,10 @@ public class AddProductActivity extends AppCompatActivity {
         public void afterTextChanged(Editable s) {
             final String TAG = AddProductActivity.class.getSimpleName();
             Log.d(TAG, "length of editText :" + s.length());
-            if (GTIN.getText().toString().matches("^[0-9]{13}$") && dateView.getText().length() > 0) {
+            if (GTIN.getText().toString().matches("^[0-9]{13}$")) {
                 GTIN.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.keppel));
-                validerButton.setEnabled(true);
+                if (dateView.getText().length() > 0)
+                    validerButton.setEnabled(true);
             }
             else {
                 GTIN.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.ships_officer));

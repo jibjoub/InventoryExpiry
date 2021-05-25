@@ -5,4 +5,6 @@
     <string name="gtin">GTIN</string>
     <string name="valider">Valider</string>
     <string name="instructions">Pour ajouter un produit, entrer d\'abord la date de péremption, puis son GTIN (nombre de 13 chiffres situé en dessous du code barre)</string>
+    <string name="liste_prod">Inventaire des produits</string>
+    <string name="nouveau_produit">Nouveau produit</string>
 </resources>
