@@ -19,7 +19,7 @@ public class MethodsTest extends TestCase {
         Methods.addToList(list, p1);
         Methods.addToList(list, p2);
         assertEquals(list.toArray().length, 1);
-        assertEquals(list.get(0).getExpiryDate(), "12/08/2021");
+        assertEquals(list.get(0).getExpiryDate(), "12/8/2021");
     }
 
 
