@@ -1,3 +1,11 @@
+/**
+ * @file AddProductActivity.java
+ * @author Jean-Baptiste Despujol
+ * @date 05/25/2020
+ * @brief File containing the logic behind the activity that sends
+ *        to the main activity a new entry in the list of products with their expiry date
+ */
+
 package com.example.inventoryexpiry;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +29,7 @@ import java.util.Locale;
 
 public class AddProductActivity extends AppCompatActivity {
 
+    //Declare all the interactive part of the activity
     private TextView dateView;
     private DatePickerDialog.OnDateSetListener DateSetListener;
     EditText GTIN;
@@ -31,16 +40,20 @@ public class AddProductActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         final String TAG = AddProductActivity.class.getSimpleName();
-        Log.d(TAG, "do we make to here");
+        //Log.d(TAG, "do we make to here");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
 
+        //Link all the interactive part with their resources counterparts
         dateView = (TextView) findViewById(R.id.add_product_date);
         GTIN = (EditText) findViewById(R.id.editTextGTIN);
-        GTIN.addTextChangedListener(textWatcher);
-
         validerButton = (Button) findViewById(R.id.valider_button);
+
+        //Disable it, it will need to check certain conditions to be enabled
         validerButton.setEnabled(false);
+
+        //Link the textWatcher with the editText
+        GTIN.addTextChangedListener(textWatcher);
 
         //Getting the data about the date with a scrolling selection
         dateView.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +74,7 @@ public class AddProductActivity extends AppCompatActivity {
             }
         });
 
-        //When validating the date entered
+        //Validate the date entered
         DateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -71,6 +84,7 @@ public class AddProductActivity extends AppCompatActivity {
         };
 
 
+        //Create an intent to go back with the main activity with an extra Product object newly created
         validerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,11 +94,9 @@ public class AddProductActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
-
     }
+
+    //Create a new TextWatcher object to check condition after each time the text in GTIN editText is changed
     private TextWatcher textWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -96,12 +108,16 @@ public class AddProductActivity extends AppCompatActivity {
 
         }
 
+        //Enabled the validerButton only when GTIN text is a 13 long number and the date is not empty
         @Override
         public void afterTextChanged(Editable s) {
             final String TAG = AddProductActivity.class.getSimpleName();
             Log.d(TAG, "length of editText :" + s.length());
-            if (GTIN.getText().toString().matches("[0-9]{13}") && dateView.getText().length() > 0) {
+            if (GTIN.getText().toString().matches("^[0-9]{13}$") && dateView.getText().length() > 0) {
                 validerButton.setEnabled(true);
+            }
+            else {
+                validerButton.setEnabled(false);
             }
     }
 

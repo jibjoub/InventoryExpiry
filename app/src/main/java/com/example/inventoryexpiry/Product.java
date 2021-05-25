@@ -1,3 +1,10 @@
+/**
+ * @file Product.java
+ * @author Jean-Baptiste Despujol
+ * @date 05/25/2020
+ * @brief File containing the class representing a product
+ */
+
 package com.example.inventoryexpiry;
 
 import java.io.Serializable;
@@ -23,6 +30,7 @@ public class Product implements Serializable, Comparable<Product> {
         this.expiryDate = expiryDate;
     }
 
+    //Override the compareTo method to use the Collection.sort on ArrayList<Product>
     @Override
     public int compareTo(Product p) {
         String[] left = expiryDate.split("/");

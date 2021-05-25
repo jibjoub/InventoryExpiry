@@ -12,7 +12,7 @@
         android:text="Expiry Date"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:id="@+id/textView1"
+        android:id="@+id/date"
         android:layout_weight="50"/>
 
     <TextView
@@ -21,7 +21,7 @@
         android:text="GTIN"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:id="@+id/textView2"
+        android:id="@+id/gtin"
         android:layout_weight="50"/>
 
 

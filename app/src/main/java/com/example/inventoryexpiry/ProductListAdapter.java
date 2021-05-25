@@ -1,3 +1,10 @@
+/**
+ * @file Product.java
+ * @author Jean-Baptiste Despujol
+ * @date 05/25/2020
+ * @brief File containing the adapter for a ListView of Product
+ */
+
 package com.example.inventoryexpiry;
 
 import android.content.Context;
@@ -36,8 +43,8 @@ public class ProductListAdapter extends ArrayAdapter<Product> {
         LayoutInflater inflater = LayoutInflater.from(context);
         convertView = inflater.inflate(resource, parent, false);
 
-        TextView tvDate = (TextView) convertView.findViewById(R.id.textView1);
-        TextView tvGtin = (TextView) convertView.findViewById(R.id.textView2);
+        TextView tvDate = (TextView) convertView.findViewById(R.id.date);
+        TextView tvGtin = (TextView) convertView.findViewById(R.id.gtin);
 
         tvDate.setText(date.toString());
         tvGtin.setText(gtin);

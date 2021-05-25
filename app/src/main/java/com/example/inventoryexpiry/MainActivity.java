@@ -1,3 +1,11 @@
+/**
+ * @file MainActivity.java
+ * @author Jean-Baptiste Despujol
+ * @date 05/25/2020
+ * @brief File containing the logic behind the main activity that displays the list of products
+ *        with their expiry date
+ */
+
 package com.example.inventoryexpiry;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Initialize the button that opens the AddProductActivity
         FloatingActionButton add_button = findViewById(R.id.add_button);
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,23 +45,29 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
+        //Initialize the listview that will display the products with their expiry date
         ListView products = (ListView) findViewById(R.id.product_list);
 
+        //Link the adapter to the listview in order to format it
         ProductListAdapter adapter = new ProductListAdapter(this, R.layout.list_adapter, list);
         products.setAdapter(adapter);
     }
+    //Opens the AddProductActivity with a simple intent
     public void openAddProductActivity() {
         Intent intent = new Intent(this, AddProductActivity.class);
         startActivity(intent);
     }
 
+    //Override of the onResume method in order to check if the main activity is resumed from the
+    //launch of the app or resumed after we created a new entry in the addproduct activity
     @Override
     protected void onResume() {
         final String TAG = AddProductActivity.class.getSimpleName();
         super.onResume();
         Intent intent = getIntent();
-        Log.d(TAG, "Y a t il un intent : " + intent);
+        //Log.d(TAG, "Y a t il un intent : " + intent);
+
+        //If we resumed the main activity from the addproduct activity, we add the new Product to the list
         if (intent.getAction()!=Intent.ACTION_MAIN) {
            final Product p = (Product) intent.getSerializableExtra("product");
            list = Methods.addToList(list, p);
