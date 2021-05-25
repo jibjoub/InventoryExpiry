@@ -8,6 +8,7 @@
 package com.example.inventoryexpiry;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +47,9 @@ public class ProductListAdapter extends ArrayAdapter<Product> {
         TextView tvDate = (TextView) convertView.findViewById(R.id.date);
         TextView tvGtin = (TextView) convertView.findViewById(R.id.gtin);
 
-        tvDate.setText(date.toString());
+        tvDate.setText(date);
+        if (date.charAt(0) == '2')
+            tvDate.setTextColor(context.getResources().getColor(R.color.clear_chill));
         tvGtin.setText(gtin);
 
         return convertView;

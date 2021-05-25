@@ -39,4 +39,8 @@ public class MethodsTest extends TestCase {
         assertEquals(list.get(0).getExpiryDate(), "21/1/2021");
     }
 
+    public void testRemainingTime() {
+        Methods.Time time = Methods.remainingTime("21/6/2021");
+        assertEquals(Methods.Time.MEDIUM, time);
+    }
 }
