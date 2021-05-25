@@ -19,7 +19,13 @@
         android:layout_width="87dp"
         android:layout_height="82dp"
         android:layout_gravity="bottom|end"
-        android:layout_margin="16dp">
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/rich_gardenia"
+        android:contentDescription="button that leads to the addproduct activity"
+        android:foreground="@drawable/plus"
+        android:foregroundGravity="center"
+        app:fabCustomSize="24dp"
+        app:maxImageSize="24dp">
 
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
 

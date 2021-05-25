@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="magenta_purple">#6D214F</color>
+    <color name="spiro_disco_ball">#25CCF7</color>
+    <color name="fiery_fuschia">#B33771</color>
+    <color name="rich_gardenia">#F97F51</color>
+    <color name="keppel">#58B19F</color>
+    <color name="ships_officer">#2C3A47</color>
+    <color name="white_pepper">#f1f2f6</color>
 </resources>

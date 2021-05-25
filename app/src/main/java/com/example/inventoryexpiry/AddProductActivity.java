@@ -9,10 +9,12 @@
 package com.example.inventoryexpiry;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
@@ -34,6 +36,8 @@ public class AddProductActivity extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener DateSetListener;
     EditText GTIN;
     Button validerButton;
+    TextView instructions;
+
 
 
 
@@ -45,9 +49,13 @@ public class AddProductActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_product);
 
         //Link all the interactive part with their resources counterparts
+        instructions = findViewById(R.id.howToAdd);
         dateView = (TextView) findViewById(R.id.add_product_date);
         GTIN = (EditText) findViewById(R.id.editTextGTIN);
         validerButton = (Button) findViewById(R.id.valider_button);
+
+        //Typeface nunito_font = Typeface.createFromAsset(getAssets(), "fonts.Nunito/nunito.ttf");
+        //instructions.setTypeface(nunito_font);
 
         //Disable it, it will need to check certain conditions to be enabled
         validerButton.setEnabled(false);
@@ -114,9 +122,11 @@ public class AddProductActivity extends AppCompatActivity {
             final String TAG = AddProductActivity.class.getSimpleName();
             Log.d(TAG, "length of editText :" + s.length());
             if (GTIN.getText().toString().matches("^[0-9]{13}$") && dateView.getText().length() > 0) {
+                GTIN.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.keppel));
                 validerButton.setEnabled(true);
             }
             else {
+                GTIN.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.ships_officer));
                 validerButton.setEnabled(false);
             }
     }
