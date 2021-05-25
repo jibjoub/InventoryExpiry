@@ -23,11 +23,13 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 import static android.util.Log.*;
 
 public class MainActivity extends AppCompatActivity {
 
+    //Global variable for the list
     public static ArrayList<Product> list = new ArrayList<>();
 
     @Override
@@ -62,10 +64,8 @@ public class MainActivity extends AppCompatActivity {
     //launch of the app or resumed after we created a new entry in the addproduct activity
     @Override
     protected void onResume() {
-        final String TAG = AddProductActivity.class.getSimpleName();
         super.onResume();
         Intent intent = getIntent();
-        //Log.d(TAG, "Y a t il un intent : " + intent);
 
         //If we resumed the main activity from the addproduct activity, we add the new Product to the list
         if (intent.getAction()!=Intent.ACTION_MAIN) {

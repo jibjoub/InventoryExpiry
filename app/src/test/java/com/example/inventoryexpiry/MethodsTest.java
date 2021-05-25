@@ -8,13 +8,13 @@ import java.util.Collections;
 public class MethodsTest extends TestCase {
 
     ArrayList<Product> list = new ArrayList<>();
-    Product p1 = new Product("12/8/2022", "1234567891234");
-    Product p2 = new Product("12/8/2021", "1234567891234");
-    Product p3 = new Product("11/8/2021", "9876543210987");
-    Product p4 = new Product("12/7/2021", "9876543210673");
-    Product p5 = new Product("4/8/2021", "9876543212312");
-    Product p6 = new Product("21/1/2021", "9876543211342");
-    Product p7 = new Product("25/12/2021", "9876543211348");
+    Product p1 = new Product("12/8/2022", "1234567891234", "pain");
+    Product p2 = new Product("12/8/2021", "1234567891234", "gateau");
+    Product p3 = new Product("11/8/2021", "9876543210987", "jus de fruit");
+    Product p4 = new Product("12/7/2021", "9876543210673", "pasteque");
+    Product p5 = new Product("4/8/2021", "9876543212312", "poulet 500g");
+    Product p6 = new Product("21/1/2021", "9876543211342", "brocolli surgeles");
+    Product p7 = new Product("25/12/2021", "9876543211348", "tourte");
 
     public void testAddToListIsReplaced() {
         Methods.addToList(list, p1);

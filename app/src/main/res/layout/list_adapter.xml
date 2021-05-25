@@ -9,17 +9,18 @@
     <TextView
         android:gravity="center"
         android:textAlignment="center"
-        android:text="Expiry Date"
+        android:text="@string/expiry_date"
         android:textSize="20sp"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:id="@+id/date"
         android:layout_weight="50"/>
 
+
     <TextView
         android:gravity="center"
         android:textAlignment="center"
-        android:text="GTIN"
+        android:text="@string/gtin"
         android:textSize="20sp"
         android:layout_width="match_parent"
         android:layout_height="60dp"

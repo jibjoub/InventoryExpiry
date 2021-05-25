@@ -115,15 +115,16 @@ public class AddProductActivity extends AppCompatActivity {
 
         }
 
-        //Enabled the validerButton only when GTIN text is a 13 long number and the date is not empty
+        //Enabled the validerButton only when GTIN text is a 13 long number and the date and name are not empty
         @Override
         public void afterTextChanged(Editable s) {
             final String TAG = AddProductActivity.class.getSimpleName();
             Log.d(TAG, "length of editText :" + s.length());
             if (GTIN.getText().toString().matches("^[0-9]{13}$")) {
                 GTIN.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.keppel));
-                if (dateView.getText().length() > 0)
+                if (dateView.getText().length() > 0) {
                     validerButton.setEnabled(true);
+                }
             }
             else {
                 GTIN.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.ships_officer));

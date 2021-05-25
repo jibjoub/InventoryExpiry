@@ -16,12 +16,13 @@ import java.util.Date;
 
 public class Methods {
 
+    //Enum class representing different states of days remaining before the expiry date
     enum Time {
-        EXPIRED,
-        CRITICAL,
-        NEAR,
-        MEDIUM,
-        FAR
+        EXPIRED, // < 0
+        CRITICAL, // >= 0 and < 4
+        NEAR, // >= 4 and < 8
+        MEDIUM, // >=8 and < 30
+        FAR // > 30
     }
 
     /** Add a new product to a list or replace the expiry date if the GTIN already exists
@@ -43,8 +44,13 @@ public class Methods {
         return list;
     }
 
+    /** Evaluate the time remaining before the expiry date
+     @param date date to evaluate
+     @return time return the time remaining evaluation
+     */
     public static Time remainingTime(String date) {
 
+        //Get the current date
         Date today = new Date();
         Calendar cal = Calendar.getInstance();
         cal.setTime(today);
@@ -54,16 +60,17 @@ public class Methods {
 
         String[] splitted = date.split("/");
 
+        //Calculate the number of days of difference
         int numberOfDayRemaining = 0;
         numberOfDayRemaining = numberOfDayRemaining + (Integer.parseInt(splitted[0]) - dayOfMonth);
         numberOfDayRemaining = numberOfDayRemaining + (30 * (Integer.parseInt(splitted[1]) - month));
         numberOfDayRemaining = numberOfDayRemaining + (365 * (Integer.parseInt(splitted[2]) - year));
 
-        if (numberOfDayRemaining <= 0)
+        if (numberOfDayRemaining < 0)
             return Time.EXPIRED;
-        if (numberOfDayRemaining < 3)
+        if (numberOfDayRemaining < 4)
             return Time.CRITICAL;
-        if (numberOfDayRemaining < 7)
+        if (numberOfDayRemaining < 8)
             return Time.NEAR;
         if (numberOfDayRemaining < 30)
             return Time.MEDIUM;

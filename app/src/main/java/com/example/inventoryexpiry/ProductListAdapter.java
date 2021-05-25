@@ -10,6 +10,7 @@ package com.example.inventoryexpiry;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +49,7 @@ public class ProductListAdapter extends ArrayAdapter<Product> {
         TextView tvDate = (TextView) convertView.findViewById(R.id.date);
         TextView tvGtin = (TextView) convertView.findViewById(R.id.gtin);
 
+        //Determining which color to apply on expiry date depending on the return value of Methods.remainingTime
         tvDate.setText(date);
         Methods.Time time = Methods.remainingTime(date);
         switch (time) {
