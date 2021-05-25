@@ -17,6 +17,7 @@ import java.util.Date;
 public class Methods {
 
     enum Time {
+        EXPIRED,
         CRITICAL,
         NEAR,
         MEDIUM,
@@ -58,6 +59,8 @@ public class Methods {
         numberOfDayRemaining = numberOfDayRemaining + (30 * (Integer.parseInt(splitted[1]) - month));
         numberOfDayRemaining = numberOfDayRemaining + (365 * (Integer.parseInt(splitted[2]) - year));
 
+        if (numberOfDayRemaining <= 0)
+            return Time.EXPIRED;
         if (numberOfDayRemaining < 3)
             return Time.CRITICAL;
         if (numberOfDayRemaining < 7)

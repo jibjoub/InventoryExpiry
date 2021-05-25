@@ -48,8 +48,24 @@ public class ProductListAdapter extends ArrayAdapter<Product> {
         TextView tvGtin = (TextView) convertView.findViewById(R.id.gtin);
 
         tvDate.setText(date);
-        if (date.charAt(0) == '2')
-            tvDate.setTextColor(context.getResources().getColor(R.color.clear_chill));
+        Methods.Time time = Methods.remainingTime(date);
+        switch (time) {
+            case EXPIRED:
+               tvDate.setTextColor(context.getResources().getColor(R.color.expired));
+               break;
+            case CRITICAL:
+                tvDate.setTextColor(context.getResources().getColor(R.color.critical));
+                break;
+            case NEAR:
+                tvDate.setTextColor(context.getResources().getColor(R.color.near));
+                break;
+            case MEDIUM:
+                tvDate.setTextColor(context.getResources().getColor(R.color.medium));
+                break;
+            case FAR:
+                tvDate.setTextColor(context.getResources().getColor(R.color.far));
+                break;
+        }
         tvGtin.setText(gtin);
 
         return convertView;

@@ -39,8 +39,29 @@ public class MethodsTest extends TestCase {
         assertEquals(list.get(0).getExpiryDate(), "21/1/2021");
     }
 
-    public void testRemainingTime() {
+    public void testRemainingTimeMedium() {
         Methods.Time time = Methods.remainingTime("21/6/2021");
         assertEquals(Methods.Time.MEDIUM, time);
     }
+
+    public void testRemainingTimeCritical() {
+        Methods.Time time = Methods.remainingTime("27/5/2021");
+        assertEquals(Methods.Time.CRITICAL, time);
+    }
+
+    public void testRemainingTimeNear() {
+        Methods.Time time = Methods.remainingTime("30/5/2021");
+        assertEquals(Methods.Time.NEAR, time);
+    }
+
+    public void testRemainingTimeFar() {
+        Methods.Time time = Methods.remainingTime("27/8/2021");
+        assertEquals(Methods.Time.FAR, time);
+    }
+
+    public void testRemainingTimeExpired() {
+        Methods.Time time = Methods.remainingTime("27/9/2020");
+        assertEquals(Methods.Time.EXPIRED, time);
+    }
+
 }
