@@ -14,6 +14,7 @@ public class MethodsTest extends TestCase {
     Product p4 = new Product("12/7/2021", "9876543210673");
     Product p5 = new Product("4/8/2021", "9876543212312");
     Product p6 = new Product("21/1/2021", "9876543211342");
+    Product p7 = new Product("25/12/2021", "9876543211348");
 
     public void testAddToListIsReplaced() {
         Methods.addToList(list, p1);
@@ -38,6 +39,18 @@ public class MethodsTest extends TestCase {
         Collections.sort(list);
         assertEquals(list.get(0).getExpiryDate(), "21/1/2021");
     }
+
+    public void testSortFirstLast() {
+        Methods.addToList(list, p7);
+        Methods.addToList(list, p1);
+        Methods.addToList(list, p3);
+        Methods.addToList(list, p4);
+        Methods.addToList(list, p5);
+        Methods.addToList(list, p6);
+        Collections.sort(list);
+        assertEquals(list.get(4).getExpiryDate(), "25/12/2021");
+    }
+
 
     public void testRemainingTimeMedium() {
         Methods.Time time = Methods.remainingTime("21/6/2021");

@@ -9,6 +9,7 @@ package com.example.inventoryexpiry;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +53,7 @@ public class ProductListAdapter extends ArrayAdapter<Product> {
         switch (time) {
             case EXPIRED:
                tvDate.setTextColor(context.getResources().getColor(R.color.expired));
+               tvDate.setPaintFlags(tvDate.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                break;
             case CRITICAL:
                 tvDate.setTextColor(context.getResources().getColor(R.color.critical));

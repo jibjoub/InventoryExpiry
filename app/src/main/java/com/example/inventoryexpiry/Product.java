@@ -35,10 +35,13 @@ public class Product implements Serializable, Comparable<Product> {
     public int compareTo(Product p) {
         String[] left = expiryDate.split("/");
         String[] right = p.expiryDate.split("/");
-        if (left[2].compareTo(right[2]) != 0)
-            return left[2].compareTo(right[2]);
-        if (left[1].compareTo(right[1]) != 0)
-            return left[1].compareTo(right[1]);
-        return left[0].compareTo(right[0]);
+        int yeardiff = Integer.parseInt(left[2]) - Integer.parseInt(right[2]);
+        int monthdiff = Integer.parseInt(left[1]) - Integer.parseInt(right[1]);
+        int daydiff = Integer.parseInt(left[0]) - Integer.parseInt(right[0]);
+        if (yeardiff != 0)
+            return yeardiff;
+        if (monthdiff != 0)
+            return monthdiff;
+        return daydiff;
     }
 }
